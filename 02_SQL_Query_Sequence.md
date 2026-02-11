@@ -38,9 +38,10 @@ SELECT
     price,
     RANK() OVER(PARTITION BY category ORDER BY price DESC) as rank_in_cat
 FROM products;
+```
 
 ## 💡 Key Concept: The "Window" Gap
-
+```sql
 A common mistake is trying to filter by a `RANK()` in the `WHERE` clause. 
 
 **Why it fails:** The `WHERE` clause (Step 2) finishes its job before the `RANK()` (Step 5) is even calculated.
