@@ -1,21 +1,20 @@
-```markdown
 # Explain Subqueries
 
 ## Subtask:
 Provide a detailed explanation of what subqueries are, their types (scalar, row, table), and where they can be used in an SQL query (SELECT, FROM, WHERE, HAVING).
 
-## What are Subqueries?
+# What are Subqueries?
 
 A subquery (also known as an inner query or nested query) is a query embedded within another SQL query. It is typically executed first, and its result is then used by the outer query.
 
-### Purpose:
+## Purpose:
 Subqueries are used to perform complex queries that cannot be easily achieved with a single SELECT statement. They allow you to:
 *   Filter data based on the results of another query.
 *   Perform calculations using aggregated data from a subset of your data.
 *   Generate derived tables for further analysis.
 *   Check for the existence of records.
 
-### Types of Subqueries:
+## Types of Subqueries:
 
 1.  **Scalar Subquery**:
     *   **Definition**: A scalar subquery returns a single value (one row and one column).
@@ -57,7 +56,7 @@ Subqueries are used to perform complex queries that cannot be easily achieved wi
     GROUP BY a.department_name;
     ```
 
-### General Usage Clauses:
+## General Usage Clauses:
 Subqueries can be embedded in various parts of an SQL query:
 *   **SELECT clause**: For scalar values.
 *   **FROM clause**: As derived tables (table subqueries).
