@@ -77,3 +77,31 @@ Here are the main scenarios when you would use GROUP BY:
 **3.**   In combination with HAVING: After GROUP BY creates groups, you can use HAVING to filter those groups based on conditions related to the aggregate functions. For instance, filtering for towns where total sales are greater than a certain amount, as we did in the previous query.
 
 In essence, GROUP BY allows you to break down your data into meaningful segments and then apply aggregate functions to each segment.
+
+The CASE statement in SQL allows you to implement if-then-else logic directly within your queries. It's incredibly useful for defining different outputs based on various conditions.
+
+## How to Use CASE
+### The basic syntax for a CASE statement is:
+
+CASE
+    WHEN condition1 THEN result1
+    WHEN condition2 THEN result2
+    ...
+    ELSE resultN -- Optional: if none of the above conditions are met
+END AS new_column_name
+
+WHEN condition THEN result: You can have multiple WHEN clauses. If condition is true, result is returned.
+ELSE resultN: This is optional. If no WHEN condition is met, the value specified in ELSE is returned. If ELSE is omitted and no WHEN condition is met, NULL is returned.
+END: This marks the end of the CASE statement.
+AS new_column_name: You typically give the result of the CASE statement an alias to make it a named column in your output.
+
+### Where to Use CASE
+You can use CASE in various parts of an SQL query:
+
+SELECT clause: To create new columns or modify existing column values based on conditions (most common use).
+WHERE clause: To apply conditional filtering.
+ORDER BY clause: To define custom sorting logic.
+GROUP BY clause: To group data based on custom categories.
+
+### Query Sequence with CASE
+CASE statements are evaluated within the clause they are part of. So, the overall query sequence remains the same (FROM -> WHERE -> GROUP BY -> HAVING -> SELECT -> ORDER BY -> LIMIT), but the CASE logic is applied at the appropriate stage.
