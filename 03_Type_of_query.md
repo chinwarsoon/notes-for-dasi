@@ -62,4 +62,122 @@ Subqueries can be embedded in various parts of an SQL query:
 *   **FROM clause**: As derived tables (table subqueries).
 *   **WHERE clause**: For filtering rows (scalar, row, or table subqueries with `IN`, `EXISTS`, `ANY`, `ALL`).
 *   **HAVING clause**: For filtering groups (scalar, row, or table subqueries with `IN`, `EXISTS`, `ANY`, `ALL`).
+
+# Explain Correlated Subqueries
+
+## Subtask:
+Explain correlated subqueries, highlighting their key difference from regular subqueries (dependency on the outer query) and when to use them.
+
+## Explain Correlated Subqueries
+
+### Subtask:
+Explain correlated subqueries, highlighting their key difference from regular subqueries (dependency on the outer query) and when to use them.
+
+### Explanation of Correlated Subqueries
+
+A **correlated subquery** is a subquery that depends on the outer query for its values. This means that the subquery cannot be executed independently of the outer query; it requires information from the outer query to produce its result. Unlike regular (non-correlated) subqueries, which are executed once and their results are used by the outer query, a correlated subquery is typically executed once for *each row* processed by the outer query.
+
+**Key Difference from Regular Subqueries**:
+*   **Regular Subquery (Non-Correlated)**: Executes once and provides a result set to the outer query. It's independent of the outer query's rows.
+*   **Correlated Subquery**: Executes repeatedly, once for each candidate row of the outer query. It references a column from the outer query, making its execution dependent on the current row being processed by the outer query.
+
+**Execution Flow**:
+1.  The outer query starts processing its first row.
+2.  For this row, the correlated subquery executes, using a value from the outer query's current row.
+3.  The result of the subquery is then used by the outer query to filter or select the current row.
+4.  This process repeats for every subsequent row of the outer query.
+
+**When to Use Correlated Subqueries**:
+Correlated subqueries are particularly useful for:
+*   **Row-by-row processing**: When you need to perform a calculation or comparison for each row of the main query based on related data.
+*   **Existence checks**: To determine if a related row exists in another table for each row of the outer query.
+*   **Comparisons involving outer query data**: When the subquery's filtering condition relies on a column from the outer query.
+
+**Common Operators**:
+Correlated subqueries are often used with operators such as:
+*   `EXISTS`
+*   `NOT EXISTS`
+*   Comparison operators (`=`, `!=`, `<`, `>`, `<=`, `>=`)
+*   `IN` (though `IN` can also be used with non-correlated subqueries)
+
+### Conceptual SQL Example:
+
+Let's say we want to find all employees who earn more than the average salary in their respective departments. This requires comparing each employee's salary to the average salary of their specific department, which changes for each department.
+
+```sql
+SELECT
+    e1.employee_id,
+    e1.employee_name,
+    e1.salary,
+    e1.department_id
+FROM
+    Employees e1
+WHERE
+    e1.salary > (
+        SELECT
+            AVG(e2.salary)
+        FROM
+            Employees e2
+        WHERE
+            e2.department_id = e1.department_id -- This is the correlation: references e1.department_id
+    );
+
+
+In this example, the inner query `(SELECT AVG(e2.salary) FROM Employees e2 WHERE e2.department_id = e1.department_id)` calculates the average salary for the department of the `e1` employee currently being considered by the outer query. This inner query runs for each employee in the outer query.
+
+## Explain Correlated Subqueries
+
+### Subtask:
+Explain correlated subqueries, highlighting their key difference from regular subqueries (dependency on the outer query) and when to use them.
+
+### Explanation of Correlated Subqueries
+
+A **correlated subquery** is a subquery that depends on the outer query for its values. This means that the subquery cannot be executed independently of the outer query; it requires information from the outer query to produce its result. Unlike regular (non-correlated) subqueries, which are executed once and their results are used by the outer query, a correlated subquery is typically executed once for *each row* processed by the outer query.
+
+**Key Difference from Regular Subqueries**:
+*   **Regular Subquery (Non-Correlated)**: Executes once and provides a result set to the outer query. It's independent of the outer query's rows.
+*   **Correlated Subquery**: Executes repeatedly, once for each candidate row of the outer query. It references a column from the outer query, making its execution dependent on the current row being processed by the outer query.
+
+**Execution Flow**:
+1.  The outer query starts processing its first row.
+2.  For this row, the correlated subquery executes, using a value from the outer query's current row.
+3.  The result of the subquery is then used by the outer query to filter or select the current row.
+4.  This process repeats for every subsequent row of the outer query.
+
+**When to Use Correlated Subqueries**:
+Correlated subqueries are particularly useful for:
+*   **Row-by-row processing**: When you need to perform a calculation or comparison for each row of the main query based on related data.
+*   **Existence checks**: To determine if a related row exists in another table for each row of the outer query.
+*   **Comparisons involving outer query data**: When the subquery's filtering condition relies on a column from the outer query.
+
+**Common Operators**:
+Correlated subqueries are often used with operators such as:
+*   `EXISTS`
+*   `NOT EXISTS`
+*   Comparison operators (`=`, `!=`, `<`, `>`, `<=`, `>=`)
+*   `IN` (though `IN` can also be used with non-correlated subqueries)
+
+### Conceptual SQL Example:
+
+Let's say we want to find all employees who earn more than the average salary in their respective departments. This requires comparing each employee's salary to the average salary of their specific department, which changes for each department.
+
+```sql
+SELECT
+    e1.employee_id,
+    e1.employee_name,
+    e1.salary,
+    e1.department_id
+FROM
+    Employees e1
+WHERE
+    e1.salary > (
+        SELECT
+            AVG(e2.salary)
+        FROM
+            Employees e2
+        WHERE
+            e2.department_id = e1.department_id -- This is the correlation: references e1.department_id
+    );
 ```
+
+In this example, the inner query `(SELECT AVG(e2.salary) FROM Employees e2 WHERE e2.department_id = e1.department_id)` calculates the average salary for the department of the `e1` employee currently being considered by the outer query. This inner query runs for each employee in the outer query.
