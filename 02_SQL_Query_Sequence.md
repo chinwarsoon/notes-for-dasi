@@ -64,3 +64,16 @@ WITH RankedData AS (
 SELECT * FROM RankedData 
 WHERE sales_rank <= 5; -- ✅ WORKS: The rank was built inside the CTE.
 ```
+
+## Use the GROUP BY clause in SQL
+You should use GROUP BY clause in SQL when you want to perform aggregate calculations (like SUM, AVG, COUNT, MAX, MIN) on subsets of your data, rather than on the entire dataset. It groups rows that have the same values in specified columns into summary rows.
+
+Here are the main scenarios when you would use GROUP BY:
+
+**1.**   To get summary statistics per category: For example, finding the total sales for each product category, the average salary per department, or the number of flats sold per town (as in our previous example).
+
+**2.**   When using aggregate functions with non-aggregated columns: If your SELECT statement includes both aggregate functions (e.g., COUNT(*)) and non-aggregate columns (e.g., town, month), all non-aggregate columns must be listed in the GROUP BY clause. This tells the database how to group the rows before applying the aggregate function.
+
+**3.**   In combination with HAVING: After GROUP BY creates groups, you can use HAVING to filter those groups based on conditions related to the aggregate functions. For instance, filtering for towns where total sales are greater than a certain amount, as we did in the previous query.
+
+In essence, GROUP BY allows you to break down your data into meaningful segments and then apply aggregate functions to each segment.
