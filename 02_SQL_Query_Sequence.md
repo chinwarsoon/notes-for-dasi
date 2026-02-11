@@ -44,6 +44,7 @@ FROM products;
 A common mistake is trying to filter by a `RANK()` in the `WHERE` clause. 
 
 **Why it fails:** The `WHERE` clause (Step 2) finishes its job before the `RANK()` (Step 5) is even calculated.
+```
 
 ### ❌ The Wrong Way
 ```sql
