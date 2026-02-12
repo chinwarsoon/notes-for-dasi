@@ -1,4 +1,14 @@
-# 1\. What is a Jupyter Notebook?
+# Index
+<details>
+  <summary><b>Click to expand Table of Contents</b></summary>
+
+1. [What is Jupyter Notebook](#what-is-a-jupyter-notebook)
+2. [Using Google Colab (browser option)](#using-google-colab-browser-option)
+ 
+
+</details>
+
+# What is a Jupyter Notebook?
 
 During the lab we will work in **Jupyter notebooks**, either in Google Colab or VS Code.
 
@@ -24,7 +34,7 @@ You do **not** need to understand everything yet; just get familiar with:
 
 ---
 
-# 2\. Using Google Colab (browser option)
+# Using Google Colab (browser option)
 
 If you plan to use **Google Colab** in the browser:
 
