@@ -2,13 +2,15 @@
 <details>
   <summary><b>Click to expand Table of Contents</b></summary>
 
-1. [What is Jupyter Notebook](#what-is-a-jupyter-notebook)
-2. [Using Google Colab (browser option)](#using-google-colab-browser-option)
+1. [What is Jupyter Notebook](#1-what-is-a-jupyter-notebook)
+2. [Using Google Colab (browser option)](#2-using-google-colab-browser-option)
+3. [Using VS Code (desktop option)](#3-using-vs-code-desktop-option)
+4. [Choose your environment for class](#4-choose-your-environment-for-class)
  
 
 </details>
 
-# What is a Jupyter Notebook?
+# 1. What is a Jupyter Notebook?
 
 During the lab we will work in **Jupyter notebooks**, either in Google Colab or VS Code.
 
@@ -34,7 +36,7 @@ You do **not** need to understand everything yet; just get familiar with:
 
 ---
 
-# Using Google Colab (browser option)
+# 2. Using Google Colab (browser option)
 
 If you plan to use **Google Colab** in the browser:
 
@@ -137,7 +139,7 @@ If this runs successfully, you are ready to use Colab’s backend while working 
 
 ---
 
-# 4\. Choose your environment for class
+# 4. Choose your environment for class
 
 For the lab, please **choose one** environment:
 
