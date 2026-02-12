@@ -6,6 +6,7 @@
 2. [Using Google Colab (browser option)](#2-using-google-colab-browser-option)
 3. [Using VS Code (desktop option)](#3-using-vs-code-desktop-option)
 4. [Choose your environment for class](#4-choose-your-environment-for-class)
+5. [What you do NOT need before class](#5-what-you-do-not-need-before-class)
  
 
 </details>
